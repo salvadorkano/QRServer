@@ -1,0 +1,16 @@
+<mat-progress-bar *ngIf="isSubmitting" mode="indeterminate"></mat-progress-bar>
+
+<h1 mat-dialog-title>Eliminar</h1>
+<ng-container>
+    <mat-dialog-content>
+        <h1>¿Desea eliminar el dato?</h1>
+    </mat-dialog-content>
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+        <button mat-dialog-close mat-button [disabled]="isSubmitting">
+            Cerrar
+        </button>
+        <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="isSubmitting">
+            Aceptar
+        </button>
+    </mat-dialog-actions>
+</ng-container>

@@ -1,0 +1,105 @@
+<mat-progress-bar *ngIf="isSubmitting" mode="indeterminate"></mat-progress-bar>
+
+<h1 mat-dialog-title>Crear usuario</h1>
+<ng-container>
+  <mat-dialog-content>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" class="container-form">
+      <div class="row-div">
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Nombre</mat-label>
+          <input name="firstName" matInput formControlName="firstName" />
+          <mat-error>
+            <span *ngIf="form.hasError('required', 'firstName')">
+              campo requerido
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Apellido</mat-label>
+          <input name="lastName" matInput formControlName="lastName" />
+          <mat-error>
+            <span *ngIf="form.hasError('required', 'lastName')">
+              campo requerido
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row-div">
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>User Name</mat-label>
+          <input name="username" matInput formControlName="username" />
+          <mat-error>
+            <span *ngIf="form.hasError('required', 'username')">
+              campo requerido
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Contraseña</mat-label>
+          <input name="password" matInput formControlName="password" />
+          <mat-error>
+            <span *ngIf="form.hasError('required', 'password')">
+              campo requerido
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row-div">
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Numero de casa</mat-label>
+          <input name="houseNumber" matInput formControlName="houseNumber" />
+          <mat-error>
+            <span *ngIf="form.hasError('required', 'houseNumber')">
+              campo requerido
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>building</mat-label>
+          <input name="building" matInput formControlName="building" />
+          <mat-error>
+            <span *ngIf="form.hasError('required', 'building')">
+              campo requerido
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Rol</mat-label>
+
+        <mat-select name="role" matInput formControlName="role">
+          <mat-option *ngFor="let item of roleList" [value]="item">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+
+        <mat-error>
+          <span *ngIf="form.hasError('required', 'role')">
+            campo requerido
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <button hidden #submitButton></button>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions class="container-action">
+    <button mat-dialog-close mat-button [disabled]="isSubmitting">
+      Cerrar
+    </button>
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="submitButton.click()"
+      [disabled]="isSubmitting"
+    >
+      Crear
+    </button>
+  </mat-dialog-actions>
+</ng-container>
